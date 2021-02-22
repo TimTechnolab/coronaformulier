@@ -28,6 +28,8 @@
 				<h3>Log in</h3>
 			</div>
 			<div class="card-body">
+
+				<!-- hij redirect hem naar ademinpaneel -->
 				<form action="AdminPaneel.php" method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
