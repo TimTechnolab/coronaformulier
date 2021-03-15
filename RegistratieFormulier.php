@@ -41,9 +41,7 @@ include("BackEnd-Registratie.php");
                     <div class="header-content">
                         <div>
                             <nav class="navbar navbar-light shadow" style="background-color: white;">
-                                <a class="navbar-brand" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">
                                     <img src="images/logo-technolab.svg" width="200" height="40" alt="">
-                                </a>
                                 <a class="btn btn-outline-success my-2 my-sm-0" href="LoginFormulier.php">Aanmelden</a>   
                             </nav>
                         </div>
