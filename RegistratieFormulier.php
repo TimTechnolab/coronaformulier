@@ -4,7 +4,7 @@ include("BackEnd-Registratie.php");
 
 <html>
 <head>
-    
+
     <title>Technolab Leiden | Registratie</title>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +44,7 @@ include("BackEnd-Registratie.php");
                                 <a class="navbar-brand" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">
                                     <img src="images/logo-technolab.svg" width="200" height="40" alt="">
                                 </a>
-                                <a class="btn btn-outline-success my-2 my-sm-0" href="LoginFormulier.php">Aanmelden</a>   
+                                <a class="btn btn-outline-success my-2 my-sm-0" href="LoginFormulier.php">Aanmelden</a>
                             </nav>
                         </div>
                     </div>
@@ -54,25 +54,25 @@ include("BackEnd-Registratie.php");
         <main>
         <!-- Dit is het formulier zelf, dus waar je alles invult in de browser -->
     <section>
-        <form method="POST" id="MainForm">
+        <form method="POST" id="MainForm" action="BackEnd-Registratie.php">
             <h1>Registratie formulier</h1>
                 <div class="form-group d-flex flex-column justify-content-center">
                 
                     <label class="p-1" for="fname">Voornaam:</label>
                     <input class="p-1 " type="text" id="fname" name="fname" required>
-              
-               
+
+
                     <label class="p-1 " for="lname">Achternaam:</label>
                     <input class="p-1 " type="text" id="lname" name="lname" required>
-              
-              
+
+
                     <label class="p-1" for="tel">Telefoonnummer:</label>
                     <input class="p-1" type="number" id="tel" name="tel" required>
-        
-          
+
+
                     <label class="p-1" for="email">E-mail:</label>
                     <input class="p-1" type="email" id="email" name="email" required>
-         
+
                     <label class="p-1" for="functie">Functie:</label>
                     <div class="d-flex flex-column">
                     <select class="p-1" name="functie" id="functie" onchange="yesNoCheck(this);" required>
@@ -93,7 +93,7 @@ include("BackEnd-Registratie.php");
                     <label><a href="" style="color:black;">Terms of policy</a></label>
                     <input type="checkbox" name="true" required>
                 </div>
-                <div class="d-flex justify-content-center"> 
+                <div class="d-flex justify-content-center">
                     <button class="SubmitButtonForm" type="submit" name="submit">Registreer</button>
                 </div>
             </div>
