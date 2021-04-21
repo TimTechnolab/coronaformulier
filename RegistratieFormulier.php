@@ -1,5 +1,17 @@
 <?php
 include("BackEnd-Registratie.php");
+
+$c = $_GET['info'];
+switch ($c) {
+  case 'success':
+    echo "<script type='text/javascript'>alert('Het formulier is succesvol verzonden. U bent meteen aangemeld, morgen kunt u weer opnieuw aanmelden.')</script>";
+  break;
+  case 'fout':
+    echo "<script type='text/javascript'>alert('Uw gegevens bestaan al! U kunt aanmelden')</script>";
+  default:
+    echo "Er is iets fout gegaan.";
+    break;
+}
 ?>
 
 <html>
@@ -32,8 +44,6 @@ include("BackEnd-Registratie.php");
 </head>
 <body>
 
-
-
 <!-- De header, staat hier onder -->
 <header id="main">
             <div class="header-content-wrap">
@@ -57,7 +67,7 @@ include("BackEnd-Registratie.php");
         <form method="POST" id="MainForm" action="BackEnd-Registratie.php">
             <h1>Registratie formulier</h1>
                 <div class="form-group d-flex flex-column justify-content-center">
-                
+
                     <label class="p-1" for="fname">Voornaam:</label>
                     <input class="p-1 " type="text" id="fname" name="fname" required>
 
