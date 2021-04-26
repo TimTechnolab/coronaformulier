@@ -21,6 +21,7 @@ if(isset($_POST['submit'])){
     $klas = secure($_POST['klas']);
     $TOS = "true";
 
+  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 //Hier word gecheckt of de gegevens al bestaan in de database
 $sql = "SELECT * FROM FormData WHERE email = '$email'";
 $result = mysqli_query($con, $sql);
@@ -31,15 +32,11 @@ $result = mysqli_query($con, $sql);
 
 if(!isset($emaill)){
     $sqlsend = "INSERT INTO FormData (voornaam, achternaam, telefoonnummer, email, TOS) VALUES('$fname', '$lname', '$tel', '$email', '$TOS')";
-if(mysqli_query($con, $sqlsend)){
+    if(mysqli_query($con, $sqlsend)){
         $sqlsend = "INSERT INTO Aanwezigheid (email, functie, school, klas) VALUES('$email', '$functie', '$school', '$klas')";
-        if(mysqli_query($con, $sqlsend)){
-
-            header("Location: RegistratieFormulier.php?info=success");
+        header("Location: RegistratieFormulier.php?info=success");
         }
-    }
-}else{
-
+    } else{
     header("Location: RegistratieFormulier.php?info=fout");
 }
 }
