@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
     $timestamp = null;
 
 //hier word de laatste ingecheckte tijd opgehaald
-$sqldate = "SELECT * FROM Aanwezigheid WHERE email = '$email' ORDER BY timestamp ASC";
+$sqldate = "SELECT * FROM aanwezigheid WHERE email = '$email' ORDER BY timestamp ASC";
 $result = mysqli_query($con, $sqldate);
      
      while($row = mysqli_fetch_array($result)) {
@@ -33,7 +33,7 @@ $strtotimestamp = strtotime($timestamp);
 $datecheck = date('Y-m-d', $strtotimestamp);
 
 //Hier word gecheckt of de gegevens bestaan in de database
-$sql = "SELECT * FROM FormData WHERE email = '$email'";
+$sql = "SELECT * FROM formData WHERE email = '$email'";
 $result = mysqli_query($con, $sql);
      
      while($row = mysqli_fetch_array($result)) {
@@ -44,7 +44,7 @@ $result = mysqli_query($con, $sql);
 if($datecheck == $curdate){
     echo "<script type='text/javascript'>alert('U heeft vandaag al het formulier ingevuld')</script>";
 }elseif($email == $emaill){
-    $sqlsend = "INSERT INTO Aanwezigheid (email, functie, school, klas) VALUES('$email', '$functie', '$school', '$klas')";
+    $sqlsend = "INSERT INTO aanwezigheid (email, functie, school, klas) VALUES('$email', '$functie', '$school', '$klas')";
         if(mysqli_query($con, $sqlsend)){
             echo "<script type='text/javascript'>alert('U bent aangemeld! fijne dag')</script>";
         }

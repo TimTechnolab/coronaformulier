@@ -21,23 +21,22 @@ if(isset($_POST['submit'])){
     $klas = secure($_POST['klas']);
     $TOS = "true";
 
+  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 //Hier word gecheckt of de gegevens al bestaan in de database
-$sql = "SELECT * FROM FormData WHERE email = '$email'";
+$sql = "SELECT * FROM formData WHERE email = '$email'";
 $result = mysqli_query($con, $sql);
-     
+
      while($row = mysqli_fetch_array($result)) {
         $emaill = $row['email'];
     }
 
 if(!isset($emaill)){
-    $sqlsend = "INSERT INTO FormData (voornaam, achternaam, telefoonnummer, email, TOS) VALUES('$fname', '$lname', '$tel', '$email', '$TOS')";
-if(mysqli_query($con, $sqlsend)){
-        $sqlsend = "INSERT INTO Aanwezigheid (email, functie, school, klas) VALUES('$email', '$functie', '$school', '$klas')";
-        if(mysqli_query($con, $sqlsend)){
-            echo "<script type='text/javascript'>alert('Het formulier is succesvol verzonden. U bent meteen aangemeld, morgen kunt u weer opnieuw aanmelden.')</script>";
+    $sqlsend = "INSERT INTO formData (voornaam, achternaam, telefoonnummer, email, TOS) VALUES('$fname', '$lname', '$tel', '$email', '$TOS')";
+    if(mysqli_query($con, $sqlsend)){
+        $sqlsend = "INSERT INTO aanwezigheid (email, functie, school, klas) VALUES('$email', '$functie', '$school', '$klas')";
+        header("Location: RegistratieFormulier.php?info=success");
         }
-    }
-}else{
-    echo "<script type='text/javascript'>alert('Uw gegevens bestaan al! U kunt aanmelden')</script>";
+    } else{
+    header("Location: RegistratieFormulier.php?info=fout");
 }
 }
