@@ -3,7 +3,7 @@
 include("db.php");
 Session_Start();
 
-if($_SESSION['ingelogd'] == true) {
+if($_SESSION['ingelogd'] == true) { 
 
 $sql = "SELECT * FROM formdata INNER JOIN aanwezigheid ON formdata.email = aanwezigheid.email";
 $result = mysqli_query($con, $sql);
@@ -67,8 +67,6 @@ $result = mysqli_query($con, $sql);
                 <th>Klas</th>
             </tr>
         </thead>
-
-        <!-- hier zit de fout -->
         <?php while ($row = mysqli_fetch_array($result)) { ?>
             <tr class="item">
                 <td><?php echo $row['voornaam']?></td>
@@ -90,3 +88,8 @@ $result = mysqli_query($con, $sql);
     header("Location: AdminLogin.php");
 }
 ?>
+
+
+
+
+
