@@ -3,16 +3,6 @@
 include("db.php");
 Session_Start();
 
-if($_SESSION['ingelogd'] == true) { 
-
-$sql = "SELECT * FROM laptop INNER JOIN laptoplenen ON laptop.laptopnaam = laptoplenen.laptopnaam";
-$result = mysqli_query($con, $sql);
-
-$sqllaptop = "SELECT * FROM laptop";
-$resultlaptop = mysqli_query($con, $sqllaptop);
-
-
-
 //Dit is een functie om cross-site scripting te voorkomen
 function secure($value){
     $value = trim($value);
@@ -24,53 +14,29 @@ function secure($value){
 
 //toevoegen van laptops
 if(isset($_POST['toevoegen'])){
-    if(!empty($_POST['naam'])){
+    if(!empty($_POST['naam'])) {
         $naam = secure($_POST['naam']);
-        $dbnaam = null;
         $sqlsend = "INSERT INTO laptop (laptopnaam) VALUES('$naam')";
 
-            $sqlcheck = "SELECT * FROM laptop WHERE laptopnaam = '$naam'";
-            $result = mysqli_query($con, $sqlcheck);
-        
-            while($row = mysqli_fetch_array($result)) {
-            $dbnaam = $row['laptopnaam'];
-        }
-        if($naam != $dbnaam){
-                if(mysqli_query($con, $sqlsend)){
-                    header("refresh:1;url=laptop-admin.php"); 
-                    echo "<script type='text/javascript'>alert('Laptop is succesvol toegevoegd!')</script>";
-                    }
-                }else{
-                    header("refresh:1;url=laptop-admin.php"); 
-                    echo "<script type='text/javascript'>alert('Laptop bestaat al!')</script>";}
-            }
-        }
-
-
-//verwijderen van laptops
-if(isset($_POST['verwijderen'])){
-    if(!empty($_POST['dnaam'])){
-        $naam = secure($_POST['dnaam']);
-        $dbnaam = null;
-        $sqldel = "DELETE FROM laptop WHERE laptopnaam = '$naam'";
-
         $sqlcheck = "SELECT * FROM laptop WHERE laptopnaam = '$naam'";
-            $result = mysqli_query($con, $sqlcheck);
-        
-            while($row = mysqli_fetch_array($result)) {
-            $dbnaam = $row['laptopnaam'];
+        $result = mysqli_query($con, $sqlcheck);
+
+        while ($row = mysqli_fetch_array($result)) {
+            $laptopnaam = $row['laptopnaam'];
+
+        }
+        if (!isset($laptopnaam)) {
+            $sqlsend = "INSERT INTO laptop (laptopnaam) VALUES('$naam')";
+            if (mysqli_query($con, $sqlsend)) {
+                header("Location: laptop-admin.php?info=success");
             }
-        if($naam == $dbnaam){
-            if(mysqli_query($con, $sqldel)){
-                header("refresh:1;url=laptop-admin.php"); 
-                    echo "<script type='text/javascript'>alert('Laptop is succesvol verwijderd!')</script>";
-                }
-            }else{
-                header("refresh:1;url=laptop-admin.php"); 
-                echo "<script type='text/javascript'>alert('Laptop bestaat niet!')</script>";}
+        } else {
+            header("Location: RegistratieFormulier.php?info=fout");
         }
     }
 
+
+}
 
 ?>
 <html lang="en">
@@ -83,7 +49,7 @@ if(isset($_POST['verwijderen'])){
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <!-- custom links -->
+        <!-- custom link om bij je css terecht komen -->
         <link rel="stylesheet" href="css/style.css">
         <script src="search.js"></script>
         <!-- datatables en jquery links -->
@@ -94,6 +60,8 @@ if(isset($_POST['verwijderen'])){
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     </head>
 <body>
+
+<!-- navigatie section -->
     <header id="main">
         <div class="header-content-wrap">
             <div class="header-deco"></div>
@@ -116,25 +84,28 @@ if(isset($_POST['verwijderen'])){
                     </nav>
                 </div>
     </header>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
     <main>
+
+        <!-------------------form section------------------>
         <section class="container d-flex justify-content-between">
             <div>
                 <h1>Laptop toevoegen</h1>
                 <form method="POST">
                     <label>Naam:</label>
+                    <!--de value naam gaan we gebruiken voor php-->
                     <input type="text" name="naam" required><br>
+                    <!--de value toevoegen gaan we gebruiken voor php-->
                     <input type="submit" name="toevoegen" value="Toevoegen">
                 </form>
             </div>
-            <div>
-                <h1>Laptop verwijderen</h1>
-                <form method="POST">
-                    <label>Naam:</label>
-                    <input type="text" name="dnaam" required><br>
-                    <input type="submit" name="verwijderen" value="Verwijderen">
-                </form>
-            </div>
         </section>
+        <!--------------------------->
+
+
+        <!--bestaande laptops overzicht-->
         <section class="mt-5 mb-5">
             <table class="table table-striped table-bordered">
                 <h1 class="text-center">Bestaande laptops</h1>
@@ -144,15 +115,30 @@ if(isset($_POST['verwijderen'])){
                         <th>Laptop status</th>
                     </tr>
                 </thead>
-                <!-- hier word de data van de database getoond -->
-                <?php while ($row = mysqli_fetch_array($resultlaptop)) { ?>
+
+                <!--hier word de data van de database getoond-->
+                <?php
+                // dit is de sql query
+                $sqlcheck = "SELECT laptopnaam , status FROM laptop";
+                // sla de resultaat op de vatiable $result
+                $result = mysqli_query($con, $sqlcheck);
+                // maak daar een $row van
+                $row = mysqli_fetch_assoc($result)
+
+
+                 ?>
+
+
                     <tr class="item">
-                        <td><?php echo $row['laptopnaam']?></td>
-                        <td><?php echo $row['status']?></td>
+                        <td><?php echo ($row['laptopnaam'])?></td>
+                        <td><?php echo ($row['status'])?></td>
                     </tr>
-                <?php } ?>
+                <?php  ?>
             </table>
         </section>
+        <!------------------------------------->
+        <!--geleende bestaande laptops overzicht-->
+
         <section class="mt-5">
     <table class="table table-striped table-bordered">
         <h1 class="text-center">Uitgeleende laptops</h1>
@@ -166,27 +152,31 @@ if(isset($_POST['verwijderen'])){
                 <th>Inlever datum</th>
             </tr>
         </thead>
-        <!-- hier word de data van de database getoond -->
-        <?php while ($row = mysqli_fetch_array($result)) { ?>
-            <tr class="item">
-                <td><?php echo $row['laptopnaam']?></td>
-                <td><?php echo $row['kleur']?></td>
-                <td><?php echo $row['naam']?></td>
-                <td><?php echo $row['email']?></td>
-                <td><?php echo $row['leendatum']?></td>
-                <td><?php echo $row['inleverdatum']?></td>
-            </tr>
-        <?php } ?>
+        <!-- hier wordt de data van de uitgeleende laptops getoond -->
+        <?php
+        //sql query
+//        $sqlcheck = "SELECT  * FROM laptoplenen ";
+//        //sql query wordt opgeslage in $laptopresultaat
+//        $laptopresult = mysqli_query($con, $sqlcheck);
+//        // sla de resultaat op als eeen array
+//        while ($row = mysqli_fetch_array($laptopresult))
+//         { ?>
+<!--            <tr class="item">-->
+<!--                <td>--><?php //echo isset($row['naam']) ?><!--</td>-->
+<!--                <td>--><?php //echo isset($row['laptopnaam']) ?><!--</td>-->
+<!--                <td>--><?php //echo isset($row['naam'])?><!--</td>-->
+<!--                <td>--><?php //echo isset($row['email'])?><!--</td>-->
+<!--                <td>--><?php //echo isset($row['leendatum'])?><!--</td>-->
+<!--                <td>--><?php //echo isset($row['inleverdatum'])?><!--</td>-->
+<!--            </tr>-->
+<!--        --><?php //} ?>
+        <!------------------------------------------------------------->
     </table>
 </section>
     </main>
 </body>
 </html>
-<?php
-}else{
-    header("Location: AdminLogin.php");
-}
-?>
+
 
 
 
