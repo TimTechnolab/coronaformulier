@@ -139,10 +139,15 @@ if(isset($_POST['toevoegen'])){
                         <td><?php echo ($row['laptopnaam'])?></td>
                         <td><?php echo ($row['status'])?></td>
                     </tr>
-                <?php  ?>
+
             </table>
         </section>
         <!------------------------------------->
+
+
+
+
+
         <!--geleende bestaande laptops overzicht-->
 
         <section class="mt-5">
@@ -159,23 +164,16 @@ if(isset($_POST['toevoegen'])){
             </tr>
         </thead>
         <!-- hier wordt de data van de uitgeleende laptops getoond -->
-        <?php
-        //sql query
-//        $sqlcheck = "SELECT  * FROM laptoplenen ";
-//        //sql query wordt opgeslage in $laptopresultaat
-//        $laptopresult = mysqli_query($con, $sqlcheck);
-//        // sla de resultaat op als eeen array
-//        while ($row = mysqli_fetch_array($laptopresult))
-//         { ?>
-<!--            <tr class="item">-->
-<!--                <td>--><?php //echo isset($row['naam']) ?><!--</td>-->
-<!--                <td>--><?php //echo isset($row['laptopnaam']) ?><!--</td>-->
-<!--                <td>--><?php //echo isset($row['naam'])?><!--</td>-->
-<!--                <td>--><?php //echo isset($row['email'])?><!--</td>-->
-<!--                <td>--><?php //echo isset($row['leendatum'])?><!--</td>-->
-<!--                <td>--><?php //echo isset($row['inleverdatum'])?><!--</td>-->
-<!--            </tr>-->
-<!--        --><?php //} ?>
+
+            <tr class="item">
+                <td><?php echo isset($row2['naam']) ?></td>
+                <td><?php echo isset($row2['laptopnaam']) ?></td>
+                <td><?php echo isset($row2['naam'])?></td>
+                <td><?php echo isset($row2['email'])?></td>
+                <td><?php echo isset($row2['leendatum'])?></td>
+                <td><?php echo isset($row2['inleverdatum'])?></td>
+            </tr>
+
         <!------------------------------------------------------------->
     </table>
 </section>
