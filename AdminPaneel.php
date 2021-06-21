@@ -1,12 +1,7 @@
 <?php
 //Dit is het bestand om met de database een connectie te maken
 include("db.php");
-Session_Start();
 
-if($_SESSION['ingelogd'] == true) { 
-
-$sql = "SELECT * FROM formdata INNER JOIN aanwezigheid ON formdata.email = aanwezigheid.email";
-$result = mysqli_query($con, $sql);
 
 ?>
 <html lang="en">
@@ -67,7 +62,7 @@ $result = mysqli_query($con, $sql);
                 <th>Klas</th>
             </tr>
         </thead>
-        <?php while ($row = mysqli_fetch_array($result)) { ?>
+
             <tr class="item">
                 <td><?php echo $row['voornaam']?></td>
                 <td><?php echo $row['achternaam']?></td>
@@ -78,15 +73,12 @@ $result = mysqli_query($con, $sql);
                 <td><?php echo $row['school']?></td>
                 <td><?php echo $row['klas']?></td>
             </tr>
-        <?php } ?>
+
     </table>
 </section>
 </body>
 </html>
-<?php
-}else{
-    header("Location: AdminLogin.php");
-}
+
 ?>
 
 

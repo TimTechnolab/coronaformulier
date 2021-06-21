@@ -40,6 +40,8 @@ $result = mysqli_query($con, $sql);
         $emaill = $row['email'];
     }
 
+
+
 //hier word gekeken of je je kan aanmelden, zo niet? dan krijg je een foutmelding
 if($datecheck == $curdate){
     echo "<script type='text/javascript'>alert('U heeft vandaag al het formulier ingevuld')</script>";
