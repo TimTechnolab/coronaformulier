@@ -142,13 +142,13 @@ if(isset($_POST['toevoegen'])){
 
             </table>
         </section>
-        <!------------------------------------->
 
 
 
 
 
-        <!--geleende bestaande laptops overzicht-->
+
+        <!----geleende bestaande laptops overzicht------------->
 
         <section class="mt-5">
     <table class="table table-striped table-bordered">
@@ -163,8 +163,8 @@ if(isset($_POST['toevoegen'])){
                 <th>Inlever datum</th>
             </tr>
         </thead>
-        <!-- hier wordt de data van de uitgeleende laptops getoond -->
 
+        <!-- hier wordt de data van de uitgeleende laptops getoond -->
             <tr class="item">
                 <td><?php echo isset($row2['naam']) ?></td>
                 <td><?php echo isset($row2['laptopnaam']) ?></td>
