@@ -2,8 +2,6 @@
 include("AdminLoginBackEnd.php");
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,19 +9,16 @@ include("AdminLoginBackEnd.php");
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Links -->
-
-
     <title>Technolab leiden | Admin Login</title>
-
-
     <!--Bootsrap 4 CDN-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"
     <!--Fontawesome CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
     <!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="AdminStyle.css">
+
+
+
 
 <body>
 <div class="container">
@@ -33,11 +28,8 @@ include("AdminLoginBackEnd.php");
                 <h3>Log in</h3>
             </div>
             <div class="card-body">
-
                 <!-- hij redirect hem naar ademinpaneel -->
                 <form action="AdminLoginBackEnd.php" method="post">
-
-
                     <!-- username -->
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
@@ -45,8 +37,6 @@ include("AdminLoginBackEnd.php");
                         </div>
                         <input type="text" class="form-control" name="adminname" value="" placeholder="Gebruikersnaam">
                     </div>
-
-
                     <!-- password -->
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
@@ -54,8 +44,6 @@ include("AdminLoginBackEnd.php");
                         </div>
                         <input type="password" class="form-control" value="" name="password" placeholder="Wachtwoord">
                     </div>
-
-
                     <div class="form-group">
                         <input type="submit" value="submit" name="submit" class="btn float-right login_btn">
                     </div>
