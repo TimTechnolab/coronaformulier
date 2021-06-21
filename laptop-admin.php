@@ -142,9 +142,8 @@ if(isset($_POST['toevoegen'])){
         <h1 class="text-center">Uitgeleende laptops</h1>
         <thead class="thead-dark">
             <tr>
+                <th>naam</th>
                 <th>Laptop naam</th>
-                <th>Laptop kleur</th>
-                <th>Naam lener</th>
                 <th>E-mail lener</th>
                 <th>Leen datum</th>
                 <th>Inlever datum</th>
@@ -168,7 +167,6 @@ if(isset($_POST['toevoegen'])){
             <tr class="item">
                 <td><?php echo ($row2['naam']) ?></td>
                 <td><?php echo ($row2['laptopnaam']) ?></td>
-                <td><?php echo ($row2['naam'])?></td>
                 <td><?php echo ($row2['email'])?></td>
                 <td><?php echo ($row2['leendatum'])?></td>
                 <td><?php echo ($row2['inleverdatum'])?></td>
