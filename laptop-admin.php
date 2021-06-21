@@ -123,15 +123,15 @@ if(isset($_POST['toevoegen'])){
                 // sla de resultaat op de vatiable $result
                 $result = mysqli_query($con, $sqlcheck);
                 // maak daar een $row van
-                $row = mysqli_fetch_assoc($result)
+                $row = mysqli_fetch_assoc($result);
 
 
 
 
                 // we voeren hier de sql query uit
-                $sqlcheck2 = "SELECT laptopnaam , status FROM laptop";
+                $sqlcheck2 = "SELECT  naam,laptopnaam,email,leendatum,inelverdatum  FROM laptoplenen";
                 // sla de resultaat op de vatiable $result
-                $result2 = mysqli_query($con, $sqlcheck);
+                $result2 = mysqli_query($con, $sqlcheck2);
                 // maak daar een $row van
                 $row2 = mysqli_fetch_assoc($result2)
 
