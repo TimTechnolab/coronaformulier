@@ -125,7 +125,10 @@ if(isset($_POST['toevoegen'])){
                 // maak daar een $row van
                 $row = mysqli_fetch_assoc($result)
 
-                //
+
+
+
+                // we voeren hier de sql query uit
                 $sqlcheck2 = "SELECT laptopnaam , status FROM laptop";
                 // sla de resultaat op de vatiable $result
                 $result2 = mysqli_query($con, $sqlcheck);
