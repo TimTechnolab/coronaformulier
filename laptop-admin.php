@@ -88,8 +88,6 @@ if(isset($_POST['toevoegen'])){
 
 <!--------------------------------------------------------------------------------------------------------------------->
     <main>
-
-        <!-------------------form section------------------>
         <section class="container d-flex justify-content-between">
             <div>
                 <h1>Laptop toevoegen</h1>
@@ -102,8 +100,6 @@ if(isset($_POST['toevoegen'])){
                 </form>
             </div>
         </section>
-        <!--------------------------->
-
 
         <!--bestaande laptops overzicht-->
         <section class="mt-5 mb-5">
@@ -124,8 +120,6 @@ if(isset($_POST['toevoegen'])){
                 $result = mysqli_query($con, $sqlcheck);
                 // maak daar een $row van
                 $row = mysqli_fetch_assoc($result);
-
-
                  ?>
 
 
@@ -133,7 +127,7 @@ if(isset($_POST['toevoegen'])){
                         <td><?php echo ($row['laptopnaam'])?></td>
                         <td><?php echo ($row['status'])?></td>
                     </tr>
-                <?php  ?>
+               
             </table>
         </section>
 
