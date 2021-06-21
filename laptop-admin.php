@@ -107,26 +107,25 @@ if(isset($_POST['toevoegen'])){
                 <h1 class="text-center">Bestaande laptops</h1>
                 <thead class="thead-dark">
                     <tr>
+                        <!-- bestaande laptops overzicht table kop --->
                         <th>Laptop naam</th>
                         <th>Laptop status</th>
                     </tr>
                 </thead>
-
-                <!--hier word de data van de database getoond-->
                 <?php
                 // dit is de sql query voor bestaande laptops showen
                 $sqlcheck = "SELECT laptopnaam , status FROM laptop";
                 // sla de resultaat op de vatiable $result
                 $result = mysqli_query($con, $sqlcheck);
-                // maak daar een $row van
+                // hier in slaan we de resultaat op en fetchen wij die
                 $row = mysqli_fetch_assoc($result);
                  ?>
 
-
-                    <tr class="item">
+                <!-- hier selecteren we wat wij willen fetchen -->
+                <tr class="item">
                         <td><?php echo ($row['laptopnaam'])?></td>
                         <td><?php echo ($row['status'])?></td>
-                    </tr>
+                </tr>
 
             </table>
         </section>
@@ -149,21 +148,18 @@ if(isset($_POST['toevoegen'])){
                 <th>Inlever datum</th>
             </tr>
         </thead>
-
-
-
         <?php
+        // dit is de sql query voor geleende laptops
         $sqlcheck2 = "SELECT  naam,laptopnaam,email,leendatum,inleverdatum  FROM laptoplenen";
         // sla de resultaat op de vatiable $result
         $result2 = mysqli_query($con, $sqlcheck2);
-        // maak daar een $row van
+        // hier in slaan we de resultaat op en fetchen wij die
         $row2 = mysqli_fetch_assoc($result2)
-
         ?>
 
 
 
-        <!-- hier wordt de data van de uitgeleende laptops getoond -->
+        <!-- hier selecteren we wat wij willen fetchen -->
             <tr class="item">
                 <td><?php echo ($row2['naam']) ?></td>
                 <td><?php echo ($row2['laptopnaam']) ?></td>
@@ -172,9 +168,12 @@ if(isset($_POST['toevoegen'])){
                 <td><?php echo ($row2['inleverdatum'])?></td>
             </tr>
 
-        <!------------------------------------------------------------->
-    </table>
-</section>
+
+        </table>
+    </section>
+
+
+
     </main>
 </body>
 </html>
