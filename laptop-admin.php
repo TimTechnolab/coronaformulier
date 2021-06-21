@@ -129,7 +129,7 @@ if(isset($_POST['toevoegen'])){
 
 
                 // we voeren hier de sql query uit
-                $sqlcheck2 = "SELECT  naam,laptopnaam,email,leendatum,inelverdatum  FROM laptoplenen";
+                $sqlcheck2 = "SELECT  naam,laptopnaam,email,leendatum,inleverdatum  FROM laptoplenen";
                 // sla de resultaat op de vatiable $result
                 $result2 = mysqli_query($con, $sqlcheck2);
                 // maak daar een $row van
@@ -139,8 +139,11 @@ if(isset($_POST['toevoegen'])){
 
 
                     <tr class="item">
+                        <td><?php echo ($row['naam'])?></td>
                         <td><?php echo ($row['laptopnaam'])?></td>
-                        <td><?php echo ($row['status'])?></td>
+                        <td><?php echo ($row['email'])?></td>
+                        <td><?php echo ($row['leendatum'])?></td>
+                        <td><?php echo ($row['inleverdatum'])?></td>
                     </tr>
 
             </table>
