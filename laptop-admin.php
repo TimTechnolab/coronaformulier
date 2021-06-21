@@ -166,12 +166,12 @@ if(isset($_POST['toevoegen'])){
 
         <!-- hier wordt de data van de uitgeleende laptops getoond -->
             <tr class="item">
-                <td><?php echo isset($row2['naam']) ?></td>
-                <td><?php echo isset($row2['laptopnaam']) ?></td>
-                <td><?php echo isset($row2['naam'])?></td>
-                <td><?php echo isset($row2['email'])?></td>
-                <td><?php echo isset($row2['leendatum'])?></td>
-                <td><?php echo isset($row2['inleverdatum'])?></td>
+                <td><?php echo ($row2['naam']) ?></td>
+                <td><?php echo ($row2['laptopnaam']) ?></td>
+                <td><?php echo ($row2['naam'])?></td>
+                <td><?php echo ($row2['email'])?></td>
+                <td><?php echo ($row2['leendatum'])?></td>
+                <td><?php echo ($row2['inleverdatum'])?></td>
             </tr>
 
         <!------------------------------------------------------------->
