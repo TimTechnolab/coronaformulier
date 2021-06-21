@@ -1,7 +1,7 @@
 <?php
 include("db.php");
 
-$sqlGeleend = $conn->query("SELECT laptopnaam FROM laptop WHERE status = 'geleend'");
+$sqlGeleend = $con->query("SELECT laptopnaam FROM laptop WHERE status = 'geleend'");
 // functie tegen cross-scripting
 function secure($value){
     $value = trim($value);
