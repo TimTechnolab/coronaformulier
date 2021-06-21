@@ -118,13 +118,19 @@ if(isset($_POST['toevoegen'])){
 
                 <!--hier word de data van de database getoond-->
                 <?php
-                // dit is de sql query
+                // dit is de sql query voor bestaande laptops showen
                 $sqlcheck = "SELECT laptopnaam , status FROM laptop";
                 // sla de resultaat op de vatiable $result
                 $result = mysqli_query($con, $sqlcheck);
                 // maak daar een $row van
                 $row = mysqli_fetch_assoc($result)
 
+                //
+                $sqlcheck2 = "SELECT laptopnaam , status FROM laptop";
+                // sla de resultaat op de vatiable $result
+                $result2 = mysqli_query($con, $sqlcheck);
+                // maak daar een $row van
+                $row2 = mysqli_fetch_assoc($result2)
 
                  ?>
 
