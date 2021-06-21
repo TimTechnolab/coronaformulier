@@ -126,26 +126,14 @@ if(isset($_POST['toevoegen'])){
                 $row = mysqli_fetch_assoc($result);
 
 
-
-
-                // we voeren hier de sql query uit
-                $sqlcheck2 = "SELECT  naam,laptopnaam,email,leendatum,inleverdatum  FROM laptoplenen";
-                // sla de resultaat op de vatiable $result
-                $result2 = mysqli_query($con, $sqlcheck2);
-                // maak daar een $row van
-                $row2 = mysqli_fetch_assoc($result2)
-
                  ?>
 
 
                     <tr class="item">
-                        <td><?php echo ($row['naam'])?></td>
                         <td><?php echo ($row['laptopnaam'])?></td>
-                        <td><?php echo ($row['email'])?></td>
-                        <td><?php echo ($row['leendatum'])?></td>
-                        <td><?php echo ($row['inleverdatum'])?></td>
+                        <td><?php echo ($row['status'])?></td>
                     </tr>
-
+                <?php  ?>
             </table>
         </section>
 
@@ -170,15 +158,29 @@ if(isset($_POST['toevoegen'])){
             </tr>
         </thead>
 
-        <!-- hier wordt de data van de uitgeleende laptops getoond -->
-            <tr class="item">
-                <td><?php echo isset($row2['naam']) ?></td>
-                <td><?php echo isset($row2['laptopnaam']) ?></td>
-                <td><?php echo isset($row2['naam'])?></td>
-                <td><?php echo isset($row2['email'])?></td>
-                <td><?php echo isset($row2['leendatum'])?></td>
-                <td><?php echo isset($row2['inleverdatum'])?></td>
-            </tr>
+
+        // we voeren hier de sql query uit
+<!---->
+<!--        --><?php
+//        $sqlcheck2 = "SELECT  naam,laptopnaam,email,leendatum,inleverdatum  FROM laptoplenen";
+//        // sla de resultaat op de vatiable $result
+//        $result2 = mysqli_query($con, $sqlcheck2);
+//        // maak daar een $row van
+//        $row2 = mysqli_fetch_assoc($result2)
+//
+//        ?>
+
+
+
+<!--        <!-- hier wordt de data van de uitgeleende laptops getoond -->-->
+<!--            <tr class="item">-->
+<!--                <td>--><?php //echo isset($row2['naam']) ?><!--</td>-->
+<!--                <td>--><?php //echo isset($row2['laptopnaam']) ?><!--</td>-->
+<!--                <td>--><?php //echo isset($row2['naam'])?><!--</td>-->
+<!--                <td>--><?php //echo isset($row2['email'])?><!--</td>-->
+<!--                <td>--><?php //echo isset($row2['leendatum'])?><!--</td>-->
+<!--                <td>--><?php //echo isset($row2['inleverdatum'])?><!--</td>-->
+<!--            </tr>-->
 
         <!------------------------------------------------------------->
     </table>
