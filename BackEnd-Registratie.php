@@ -2,8 +2,6 @@
 //Dit is het bestand om met de database een connectie te maken
 include("db.php");
 
-
-
 //Dit is een functie om cross-site scripting te voorkomen
 function secure($value){
     $value = trim($value);
