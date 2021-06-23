@@ -116,8 +116,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <form action"<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <!-- username -->
                     <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <!-- dit is voor de emptsy username message -->
+                        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                        <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                    </div>
                         </div>
                         <input type="text" class="form-control" name="username" value="username" placeholder="Gebruikersnaam">
 
