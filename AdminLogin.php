@@ -112,8 +112,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <h3>Log in</h3>
             </div>
             <div class="card-body">
-                <!-- hij redirect hem naar ademinpaneel -->
-                <form action="AdminLoginBackEnd.php" method="post">
+                <!-- hij redirect hem naar zichzelf -->
+                <form action"<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <!-- username -->
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
