@@ -1,15 +1,21 @@
 <?php
-//delete gast en leraar na 1 jaar
 
-    // $time1year = date('Y-m-d', strtotime('+1 year'));
-    // $sql = "DELETE formdata, aanwezigheid FROM formdata INNER JOIN aanwezigheid ON formdata.email = aanwezigheid.email WHERE aanwezigheid.timestamp >= '".$time1year."' AND (functie = 'gast' OR functie = 'leraar')";
-    // if ($con->query($sql) === TRUE) {
+include "db.php"; // Using database connection file here
 
-    //   }
 
-//delete alles na 3 maanden
-    $time1year = date('Y-m-d', strtotime('+3 month'));
-    $sql = "DELETE formdata, aanwezigheid FROM formdata INNER JOIN aanwezigheid ON formdata.email = aanwezigheid.email WHERE aanwezigheid.timestamp >= '".$time1year."' AND (functie = 'gast' OR functie = 'leraar' OR functie = 'werknemer')";
-    if ($con->query($sql) === TRUE) {
+$id = $_GET['id']; // get id through query string
 
-    }
+//sql query
+$del = mysqli_query($con,"delete from laptop where id = '$id'"); // delete query
+
+if($del)
+{
+    mysqli_close($con); // Close connection
+    header("location:laptop-admin.php"); // redirects to all records page
+    exit;
+}
+else
+{
+    echo "Error deleting record"; // display error message if not delete
+}
+?>
