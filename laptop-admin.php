@@ -110,6 +110,9 @@ if(isset($_POST['toevoegen'])){
                         <!-- bestaande laptops overzicht table kop --->
                         <th>Laptop naam</th>
                         <th>Laptop status</th>
+
+                        <td><a href="DeleteFunction.php?id=<?php echo $del['id']; ?>">Delete</a></td>
+
                     </tr>
                 </thead>
                 <?php
@@ -117,8 +120,10 @@ if(isset($_POST['toevoegen'])){
                 $sqlcheck = "SELECT laptopnaam , status FROM laptop";
                 // sla de resultaat op de vatiable $result
                 $result = mysqli_query($con, $sqlcheck);
+
                 // hier in slaan we de resultaat op en fetchen wij die
                 $row = mysqli_fetch_assoc($result);
+
                  ?>
 
                 <!-- hier selecteren we wat wij willen fetchen -->
@@ -126,6 +131,8 @@ if(isset($_POST['toevoegen'])){
                         <td><?php echo ($row['laptopnaam'])?></td>
                         <td><?php echo ($row['status'])?></td>
                 </tr>
+
+
 
             </table>
         </section>

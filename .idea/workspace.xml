@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DeleteFunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/DeleteFunction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laptop-admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/laptop-admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
       <workItem from="1615280123807" duration="1520000" />
       <workItem from="1620818871045" duration="22451000" />
       <workItem from="1621254686688" duration="2692000" />
-      <workItem from="1624625138199" duration="771000" />
+      <workItem from="1624625138199" duration="2917000" />
     </task>
     <servers />
   </component>

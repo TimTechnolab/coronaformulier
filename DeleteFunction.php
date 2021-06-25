@@ -5,6 +5,7 @@ include "db.php"; // Using database connection file here
 
 $id = $_GET['id']; // get id through query string
 
+
 //sql query
 $del = mysqli_query($con,"delete from laptop where id = '$id'"); // delete query
 
