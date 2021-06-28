@@ -153,7 +153,7 @@ if(isset($_POST['toevoegen'])){
         $sqlcheck2 = "SELECT  naam,laptopnaam,email,leendatum,inleverdatum  FROM laptoplenen";
         // sla de resultaat op de vatiable $result
         $result2 = mysqli_query($con, $sqlcheck2);
-        // hier in slaan we de resultaat op en fetchen wij die
+        // hier in slaan we de resultaat op en fetchen wij die en ook wel de nieuwe variable om te showen
         $row2 = mysqli_fetch_assoc($result2)
         ?>
 
