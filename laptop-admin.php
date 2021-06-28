@@ -121,6 +121,8 @@ if(isset($_POST['toevoegen'])){
                 $row = mysqli_fetch_assoc($result);
                  ?>
 
+                <!-- dit heb ik gefixt door de isset weg te halen voor mijn $row variable -->
+
                 <!-- hier selecteren we wat wij willen fetchen -->
                 <tr class="item">
                         <td><?php echo ($row['laptopnaam'])?></td>
@@ -158,7 +160,7 @@ if(isset($_POST['toevoegen'])){
         ?>
 
 
-
+<!-- dit heb ik gefixt door de isset weg te halen voor mijn $row2 variable -->
         <!-- hier selecteren we wat wij willen fetchen -->
             <tr class="item">
                 <td><?php echo ($row2['naam']) ?></td>
