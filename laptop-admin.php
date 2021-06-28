@@ -84,10 +84,7 @@ if(isset($_POST['toevoegen'])){
                     </nav>
                 </div>
     </header>
-
-
-<!--------------------------------------------------------------------------------------------------------------------->
-    <main>
+ <main>
         <section class="container d-flex justify-content-between">
             <div>
                 <h1>Laptop toevoegen</h1>
@@ -110,7 +107,7 @@ if(isset($_POST['toevoegen'])){
                         <!-- bestaande laptops overzicht table kop --->
                         <th>Laptop naam</th>
                         <th>Laptop status</th>
-
+                        <!-- bestaande laptops overzicht table kop en ook de delete knop waar hij de id van de rij pakt en zo het verwijdert --->
                         <td><a href="DeleteFunction.php?id=<?php echo $del['id']; ?>">Delete</a></td>
 
                     </tr>
@@ -132,14 +129,8 @@ if(isset($_POST['toevoegen'])){
                         <td><?php echo ($row['status'])?></td>
                 </tr>
 
-
-
             </table>
         </section>
-
-
-
-
 
 
         <!----geleende bestaande laptops overzicht------------->
@@ -163,8 +154,6 @@ if(isset($_POST['toevoegen'])){
         // hier in slaan we de resultaat op en fetchen wij die
         $row2 = mysqli_fetch_assoc($result2)
         ?>
-
-
 
         <!-- hier selecteren we wat wij willen fetchen -->
             <tr class="item">
